@@ -1,0 +1,2 @@
+export const SIGN_IN_USER_DETAILS = 'SIGN_IN_USER_DETAILS';
+export const ADD_EMPLOYEES = 'ADD_EMPLOYEES';
