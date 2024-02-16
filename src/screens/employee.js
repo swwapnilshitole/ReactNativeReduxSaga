@@ -5,34 +5,34 @@ import {
   TouchableOpacity,
   TextInput,
   Platform,
-} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {UseDispatch, useDispatch} from 'react-redux';
-import {addEmployee} from '../redux/action';
-import {useNavigation} from '@react-navigation/native';
+} from "react-native";
+import React, { useEffect, useState } from "react";
+import { UseDispatch, useDispatch } from "react-redux";
+import { addEmployee } from "../redux/action";
+import { useNavigation } from "@react-navigation/native";
 
 function Employee() {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [age, setAge] = useState(null);
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const handleAddEmployee = () => {
     if (
-      name === '' ||
+      name === "" ||
       age === null ||
       age.length === 0 ||
-      address === '' ||
-      city === ''
+      address === "" ||
+      city === ""
     ) {
       setError(true);
     } else {
-      const employee = {name, age, address, city};
+      const employee = { name, age, address, city };
       dispatch(addEmployee(employee));
-      console.log('Employee', employee);
+      console.log("Employee", employee);
       setError(false);
       navigation.goBack();
     }
@@ -73,12 +73,13 @@ function Employee() {
         <TouchableOpacity
           activeOpacity={0.5}
           style={styles.signInButton}
-          onPress={handleAddEmployee}>
+          onPress={handleAddEmployee}
+        >
           <Text style={styles.textSignin}>Add</Text>
         </TouchableOpacity>
         {error && (
-          <View style={{alignItems: 'flex-start', top: 0, paddingLeft: 20}}>
-            <Text style={{color: 'red', fontSize: 17}}>
+          <View style={{ alignItems: "flex-start", top: 0, paddingLeft: 20 }}>
+            <Text style={{ color: "red", fontSize: 17 }}>
               * All fields are mandatory
             </Text>
           </View>
@@ -91,50 +92,50 @@ function Employee() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'gray',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#fff',
+    backgroundColor: "gray",
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#fff",
   },
 
   subContainer: {
-    backgroundColor: 'gray',
-    width: '92%',
-    height: '70%',
+    backgroundColor: "gray",
+    width: "92%",
+    height: "70%",
   },
 
   signInButton: {
-    alignSelf: 'center',
-    backgroundColor: '#085B70',
-    justifyContent: 'center',
-    width: '90%',
-    height: '10%',
+    alignSelf: "center",
+    backgroundColor: "#085B70",
+    justifyContent: "center",
+    width: "90%",
+    height: "10%",
     borderRadius: 10,
-    alignItems: 'center',
+    alignItems: "center",
     margin: 25,
   },
   text: {
     fontSize: 17,
     paddingTop: 15,
-    fontWeight: Platform.OS === 'ios' ? '700' : 'bold',
+    fontWeight: Platform.OS === "ios" ? "700" : "bold",
     paddingLeft: 15,
   },
   textInput: {
-    width: '90%',
-    backgroundColor: '#fff',
-    height: '10%',
+    width: "90%",
+    backgroundColor: "#fff",
+    height: "10%",
     borderRadius: 10,
     top: 5,
     padding: 10,
     paddingTop: 10,
     fontSize: 14,
-    justifyContent: 'center',
-    alignSelf: 'center',
+    justifyContent: "center",
+    alignSelf: "center",
   },
   textSignin: {
     fontSize: 18,
-    fontWeight: '600',
-    color: '#FFF',
+    fontWeight: "600",
+    color: "#FFF",
   },
 });
 
